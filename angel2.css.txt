@@ -1,0 +1,406 @@
+/* backup mb you need this... */
+
+@font-face {
+    /* font-family: BalkaraCon; */
+    /* src: url(/AngelDecor2/fonts/BalkaraCondensed.ttf) format('ttf'); */
+}
+
+body {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin: 0;
+}
+
+header{
+    /* font-family: url(/AngelDecor2/fonts/BalkaraCondensed.ttf);  */
+    /*
+    ПОФИКСИТЬ ШРИФТ ОБЯЗАТЕЛЬНО
+    */
+    text-align: center;
+    background-color: cadetblue;
+    padding: 15px;
+    z-index: 2;
+}
+/* ЭТО ТО ЧТО Я ХОЧУ МБ МБ МБ ПОЗЖЕ РЕАЛИЗОВАТЬ
+    position: fixed;
+    filter: blur(50%);
+*/
+
+
+section img {
+    filter: brightness(60%);
+    position: relative;
+    max-width: 100%;
+    max-height:100% ;
+    margin: 0;
+    padding: 0;
+    filter: brightness(59%)
+}
+
+nav {
+    background-color: coral;
+}
+
+nav ul {
+    margin-top: -70px;
+    list-style-type: none;
+
+    display: flex;
+    justify-content: space-evenly; 
+    align-items: center;
+
+    padding:0 500px;
+}
+
+nav li{
+    display: inline-block;
+}
+
+
+/*
+ТЕБЕ ЖЕЛАТЕЛЬНО ПОФИКСИТЬ ДЛИНУ ШИРИНУ ВЫСОТУ ЕСЛИ МОЖЕШЬ
+*/
+nav a{
+    color: #fff;
+    /* border: 1px red solid; dont like how it looks */ 
+    font-weight: bold;
+
+    text-decoration: none;
+    display: inline-block;
+    max-width: 100%;
+    letter-spacing: 1px;
+    padding: 0px 10px;
+    font-size: 20px;
+    width: auto;
+
+}
+
+.options { 
+    max-width: 100%;
+    position: absolute;
+    top: 12.2%;
+    padding: 10px;
+    width: 1805px;
+}
+
+main h2{
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: auto;
+    height: auto;
+    color: #fff;
+    font-size: 70px;
+    /* border: 1px greenyellow solid; dont like how it looks */
+}
+
+.label{
+    max-width: 100%;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+
+}
+
+main ul{
+    background-color: beige;
+    
+    /*
+    ХЗ ПОЧЕМУ НЕТ КАРТИНОК НУЖНО РАЗОБРАТЬСЯ ПОЧЕМУ
+    */
+}
+
+footer {
+    text-align: center;
+    background-color: rgb(153, 153, 153);
+}
+
+.banner { /* you might wanna change this but it does look cool ngl */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.button {
+    background-color: white;
+    border-radius: 12px;
+    border: none;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+
+    top: 55%;
+    position: absolute;
+
+    left: 50%;
+    transform: translateX(-50%);
+
+    cursor: pointer;
+
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+/* ДРУГОЙ ВАРИК КАК СДЕЛАТЬ ХЕРНЮ 
+nav ul li a{
+    z-index: 0;
+    position:absolute;
+    border: 1px red solid;
+    top: 0;
+    left: 0;
+    display: inline-block;
+    padding: 10px;
+    width: 100%;
+    font-size: 50px;
+    color: #fff;
+    text-decoration: none;
+}
+*/
+
+/*
+section div{
+    max-width: 100%;
+    border: 1px orange solid;
+    top: 0;
+    left: 0;
+}
+
+section div a {
+    text-decoration: none;
+}
+*/
+
+/* a.ButtonProd {
+    color: black;
+    text-decoration: none;
+    position: absolute;
+    
+    width: auto;
+    top: 800px;
+    font-size: 60px;
+    left: 43%
+} */
+/* border: 1px orangered solid; dont like how it looks  */
+
+
+
+
+/*
+УБЕРИ ЭТОТ КОММЕНТАРИЙ ЧТОБЫ ВСЕ ОК БЫЛО
+header {
+    text-align: center;
+    padding: 0;
+    background-color: transparent;
+    filter: blur(70%);
+}
+
+header {
+    font-family:url(/AngelDecor2/fonts/BalkaraCondensed.ttf); ;
+}
+
+section img{
+    max-width: 100%;
+    filter: brightness(60%);
+    position: relative;
+    max-width: 100%;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    white-space: nowrap;
+}
+
+/*nav li{
+    width: 20%;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    font-size: 40px;
+    list-style-type: none;
+}
+
+nav ul {
+    width: 100%;
+    white-space: nowrap;
+}
+a.main-page{
+    font-size: 20px;
+    text-decoration: none;
+    color: #000;
+    position: absolute;
+}
+*/
+
+/*
+li a {
+    left: 50px;
+    text-align: center;
+    top: 60px;
+    position: absolute;
+    display: inline-block;
+    border: 2px red solid;
+    text-decoration: none;
+    color: #ffffff;
+}
+*/
+
+/*
+.lamps {
+    left:auto;
+    width: auto;
+    display: inline-block;
+    text-align: center;
+    top: 0;
+    border: 1px red solid;
+    color: #ffffff;
+    text-decoration: none;
+    position: absolute;
+}
+
+.vasa {
+    left:auto;
+    width: auto;
+    display: inline-block;
+    text-align: center;
+    top: 0;
+    margin:0;
+    border: 1px red solid;
+    color: #ffffff;
+    text-decoration: none;
+    position: absolute;
+}
+
+.sculpt {
+    left:auto;
+    width: auto;
+    display: inline-block;
+    text-align: center;
+    top: 0;
+    border: 1px red solid;
+    color: #ffffff;
+    text-decoration: none;
+    position: absolute;
+}
+
+.about {
+    left:auto;
+    width: auto;
+    display: inline-block;
+    text-align: center;
+    top: 0;
+    border: 1px red solid;
+    color: #ffffff;
+    text-decoration: none;
+    position: absolute;
+}
+
+.others {
+    left:auto;
+    width: auto;
+    display: inline-block;
+    top: 0;
+    border: 1px red solid;
+    color: #ffffff;
+    text-decoration: none;
+    position: absolute;
+}
+
+li.services {
+    width: auto;
+    left: 50%;
+    margin: 0;
+    padding: 0;
+    display:block;
+    position: absolute;
+    text-align: center;
+}
+*/ 
+
+/*
+nav {
+    background-color: cadetblue;
+    padding: 15px;
+}
+
+
+.menu nav ul li{
+    width: 50%;
+    display: inline-blocks;
+    font-size: 60px;
+}
+
+.lamps, .vasa, .sculpt, .about, .others {
+    text-align: center;
+}
+ul {
+    width: 100%;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    
+}
+
+ul li a {
+    width: 100%;
+    display: inline-block;
+    padding: 2px 10px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 50px;
+    position: absolute;
+    top: 50px;
+    border: 1px red solid;
+}
+
+head, body, ul, li, h1, h2, footer, a {
+    font-family: url(/AngelDecor2/fonts/BalkaraCondensed.ttf);
+    margin: 0;
+    padding: 0;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    background-color: rgb(163, 163, 163);
+}
+
+.product {
+    position: absolute;
+    white-space: nowrap;
+    border: 1px grey solid;
+    display: flex;
+    justify-content: center;
+    background-color: aquamarine;
+    max-width:100%;
+    font-size: 220%;
+    top: 40%;
+    left: 45%;
+
+}
+article {
+    display: flex;
+    justify-content: center;
+    background-color:bisque;
+
+}
+
+div.button a{
+    font-size: 60px;
+    top:50%;
+    left: 45%;
+    cursor: pointer;
+    position: absolute;
+    color: #fff;
+    text-decoration: none;
+    display: inline-block;
+    width: auto;
+    height: auto;
+    border: 1px green solid;
+    border-radius: 60px;
+    background-color: green;
+}
+
