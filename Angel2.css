@@ -222,7 +222,7 @@ main .white-space{
     transform: scale(1.05);
 }
  .centered {
-    color: #ffffff;
+    color: #000000;
     text-align: center;
     margin: 40px;
 }
