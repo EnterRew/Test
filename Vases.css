@@ -51,19 +51,29 @@ section img{
     z-index: -1;
 }
 .label{
-    display: flex;
+    /* display: flex;
     justify-content: center;
+    margin-top: 20vh; */
     /*font-size: 280%; для адаптации ? еще можешь подумать как тебе лучше.
     */
-    font-size: 40px;
+    /* 
+    color: #fff; */
+
+    font-size: 55px;
+    margin-top: 20vh;
     color: #fff;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    z-index: 2;
 }
 .under-label{
+    margin-top: 10vh;
     display: flex;
     justify-content: center;
     /*font-size: 320%; для адаптации ? еще можешь подумать как тебе лучше.
     */
-    font-size: 50px;
+    font-size: 30px;
     color: #fff;
 }
 
@@ -116,16 +126,20 @@ section img{
 }
 .name{
     font-weight: bold;
+    height: fit-content;
+    margin-top: 15%;
     margin-bottom: 0px;
     padding: 0 50px;
 }
-.price{
-    margin-top: 0px;
+.prod-info{
+    margin-top: 15%;
+    height: fit-content;
+    text-align: center;
     padding: 0 50px; 
 }
-.prod-info{
-    margin-top: 0px;
-    text-align: center;
+.price{
+    margin-top: 15%;
+    height: fit-content;
     padding: 0 50px; 
 }
 
@@ -152,6 +166,8 @@ footer img{
     z-index: -1;
 }
 .ContactInf, .Adress, .Tel{
+    margin-top: 2vh;
+    font-size: large;
     display: flex;
     justify-content: center;
     position: relative;
@@ -161,6 +177,10 @@ footer img{
     text-decoration: none;
     z-index: 2;
 }
+ .footer {
+    display: flex;
+    justify-content: space-around;
+ }
 /*
 .FooterImg{
     display: flex;
@@ -172,3 +192,22 @@ footer img{
 }
 */
 
+/* ширина полосы прокрутки */
+::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  /* цвет фона полосы прокрутки */
+  ::-webkit-scrollbar-track {
+    background-color: aliceblue;
+  }
+  
+  /* цвет ползунка (активной части) */
+  ::-webkit-scrollbar-thumb {
+    background-color: #3713ff89;
+  }
+  
+  /* стиль кнопок "вверх" и "вниз" на полосе прокрутки */
+  ::-webkit-scrollbar-button {
+    display: none;
+  }

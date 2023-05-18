@@ -56,6 +56,7 @@ article h2{
     font-size: 50px;
 }
 .label{
+    margin-top: 20vh;
     color: #fff;
     position: relative;
     display: flex;
@@ -64,8 +65,7 @@ article h2{
 }
 
 .button{
-    display: flex;
-    justify-content: center;
+    text-align: center;
     color: #fff;
     border: 5px #fff solid;
     max-width: 100%;
@@ -74,5 +74,8 @@ article h2{
     border-radius: 20px;
     text-decoration: none;
 }
-
-
+ .cringe-for-button {
+    margin-top: 10vh;
+    display: flex;
+    justify-content: center;
+ }
