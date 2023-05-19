@@ -1,14 +1,14 @@
 @font-face {
     font-family: BalkaraCondensed;
-    src: url(./fonts/BalkaraCondensed.otf);
-    src: url(./fonts/BalkaraCondensed.ttf);
-    src: url(./fonts/BalkaraCondensed.woff);
+    src: url(../fonts/BalkaraCondensed.otf);
+    src: url(../fonts/BalkaraCondensed.ttf);
+    src: url(../fonts/BalkaraCondensed.woff);
 }
 body { 
     font-family: BalkaraCondensed;
-    src: url(./fonts/BalkaraCondensed.otf);
-    src: url(./fonts/BalkaraCondensed.woff);
-    src: url(./fonts/BalkaraCondensed.otf);
+    src: url(../fonts/BalkaraCondensed.otf);
+    src: url(../fonts/BalkaraCondensed.woff);
+    src: url(../fonts/BalkaraCondensed.otf);
      background-color: aliceblue;
 }
 html{
