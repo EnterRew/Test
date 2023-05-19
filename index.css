@@ -79,3 +79,16 @@ article h2{
     display: flex;
     justify-content: center;
  }
+.btn-login {
+    text-align: center;
+    border: 2px #fff solid;
+    width: 3%;
+    padding: 7px;
+    border-radius: 20px;
+
+    position: absolute;
+    top: 7vh;
+    right: 50vh; /* or 10vh for far right */
+    color: #fff;
+    text-decoration: none;
+}

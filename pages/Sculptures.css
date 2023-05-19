@@ -1,16 +1,16 @@
 @font-face {
     font-family: BalkaraCondensed;
-    src: url(./fonts/BalkaraCondensed.otf);
-    src: url(./fonts/BalkaraCondensed.ttf);
-    src: url(./fonts/BalkaraCondensed.woff);
-  }
-  body {
+    src: url(../fonts/BalkaraCondensed.otf);
+    src: url(../fonts/BalkaraCondensed.ttf);
+    src: url(../fonts/BalkaraCondensed.woff);
+}
+body {
     font-family: BalkaraCondensed;
-    src: url(./fonts/BalkaraCondensed.otf);
-    src: url(./fonts/BalkaraCondensed.woff);
-    src: url(./fonts/BalkaraCondensed.otf);
-  }
-  .options{
+    src: url(../fonts/BalkaraCondensed.otf);
+    src: url(../fonts/BalkaraCondensed.woff);
+    src: url(../fonts/BalkaraCondensed.otf);
+}
+.options{
     font-size: 30px;
     display: flex;
     justify-content: center;
@@ -19,15 +19,15 @@
     top: 0;
     width: auto;
     padding: 10px;
-  }
-  .options ul{
+}
+.options ul{
     display: flex;
     justify-content: center;
     position: relative;
     list-style-type: none;
     z-index: 2;
-  }
-  .options a{
+}
+.options a{
     display: flex;
     justify-content: center;
     position: relative;
@@ -38,8 +38,8 @@
     color: #fff;
     text-decoration: none;
     z-index: 2;
-  }
-  section img{
+}
+section img{
     top: 0;
     left: 0;
     position: absolute;
@@ -49,8 +49,8 @@
     object-fit: cover;
     filter: brightness(60%);
     z-index: -1;
-  }
-  .label{
+}
+.label{
     font-size: 55px;
     margin-top: 20vh;
     color: #fff;
@@ -58,8 +58,8 @@
     display: flex;
     justify-content: center;
     z-index: 2;
-  }
-  .under-label{
+}
+.under-label{
     margin-top: 10vh;
     display: flex;
     justify-content: center;
@@ -67,20 +67,20 @@
     */
     font-size: 30px;
     color: #fff;
-  }
-  
-  .container{
+}
+
+.container{
     position: inherit;
     display: flexbox;
     justify-content: center;
-  
-  }
-  .content li{
+
+}
+.content li{
     display: flex;
     justify-content: center;
     margin: 10% 10%;
-  }
-  .content li  img{
+}
+.content li  img{
     display: flex;
     justify-content: center;
     margin: 0% auto;
@@ -89,36 +89,36 @@
     object-fit: contain;
     border-radius: 20px;
     transition: 0.5s;
-  }
-  .name{
+}
+.name{
     font-weight: bold;
     height: fit-content;
     margin-top: 15%;
     margin-bottom: 0px;
     padding: 0 50px;
-  }
-  .prod-info{
+}
+.prod-info{
     margin-top: 15%;
     height: fit-content;
     text-align: center;
     padding: 0 50px; 
-  }
-  .price{
+}
+.price{
     margin-top: 15%;
     height: fit-content;
     padding: 0 50px; 
-  }
-  
-  
-  .content li img:hover {
+}
+
+
+.content li img:hover {
     transform: scale(1.05);
-  }
-  .NewProducts{
+}
+.NewProducts{
     color: #000000;
     text-align: center;
     margin: 40px;
-  }
-  footer img{
+}
+footer img{
     display: flex;
     left: 0;
     margin: 0;
@@ -130,8 +130,8 @@
     object-fit: cover;
     filter: brightness(60%);
     z-index: -1;
-  }
-  .ContactInf, .Adress, .Tel{
+}
+.ContactInf, .Adress, .Tel{
     margin-top: 2vh;
     font-size: large;
     display: flex;
@@ -142,14 +142,14 @@
     color: #fff;
     text-decoration: none;
     z-index: 2;
-  }
-  .footer {
+}
+ .footer {
     display: flex;
     justify-content: space-around;
-  }
-  
-  /* ширина полосы прокрутки */
-  ::-webkit-scrollbar {
+ }
+
+/* ширина полосы прокрутки */
+::-webkit-scrollbar {
     width: 5px;
   }
   

@@ -1,0 +1,79 @@
+h1 {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  letter-spacing: 1vh;
+}
+
+body {
+  /* background-color: #ffffff; */
+  font-family: sans-serif;
+  font-size: 16px;
+  color: #333333;
+
+  background: linear-gradient(-45deg, #f1271156, #f5af1956, #d9b81156, #fce04356);
+	background-size: 400% 400%;
+	animation: gradientBG 15s ease infinite;
+
+}
+
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+form {
+  width: 400px;
+  margin: 0 auto;
+  background-color: #f4f4f468;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+input {
+  width: 95%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #ffffffb6;
+}
+
+input:focus {
+  border-color: #000;
+  outline: none;
+}
+
+button {
+  background-color: #04AA6D;
+  width: 95%;
+  color: #ffffff;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #000088;
+}
+
+label {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.login-form {
+  margin-top: 10vh;
+}
+
+.fix {
+  margin-top: 5px;
+  width: 100%;
+}
