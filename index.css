@@ -91,4 +91,26 @@ article h2{
     right: 50vh; /* or 10vh for far right */
     color: #fff;
     text-decoration: none;
+
+    transition: 0.5s;
+}
+/* новый код отсюда */
+.btn-login:hover {
+    letter-spacing: 0.2em;
+    width: 4%;
+    right: 49vh; /* shitcode but looks cool */
+}
+nav ul li a{
+    transition: 0.5s;
+}
+nav ul li a:hover {
+    color: #d7fff3;
+    letter-spacing: 0.1em;
+
+}
+nav ul li {
+    transition: 1s;
+}
+nav ul li:hover {
+    border-bottom: 2px #fff solid;
 }
