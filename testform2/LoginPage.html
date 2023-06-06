@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Login Page</title>
+</head>
+<body>
+ <form id="loginForm" action="#">
+  <input type="text" name="login" placeholder="Login">
+  <input type="password" name="password" placeholder="Password">
+  <input type="submit" value="Login">
+ </form>
+ <script defer>
+
+window.IndexedDB = window.webkitIndexedDB || window.mozIndexedDB || window.msIndexedDB;
+
+// Check if the database exists
+var db = IndexedDB.open("MyDatabase", 2);
+
+// If the database does not exist, create it
+if (!db) {
+  db = IndexedDB.open("MyDatabase", 2, function(event) {
+    // Set the onupgradeneeded event listener
+    db.onupgradeneeded = function(event) {
+      var db = event.target.result;
+      db.createObjectStore("users", { keyPath: "login" });
+    
+      db.transaction("users").objectStore("users").add({ login: "johndoe", password: "password123" });
+    };
+  });
+}
+
+// Check if the database was opened successfully
+if (db) {
+  console.log("Database opened successfully");
+} else {
+  console.log("Database could not be opened");
+}
+
+function checkLogin(login, password) {
+  var user = db.transaction("users").objectStore("users").get(login);
+
+  if (user && user.password === password) {
+    return true;
+  } else {
+    return false;
+  }
+}
+var form = document.getElementById("loginForm");
+
+form.addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  var login = form.elements["login"].value;
+  var password = form.elements["password"].value;
+
+  if (checkLogin(login, password)) {
+    window.location.href = "home.html";
+  } else {
+    alert("Invalid login or password");
+  }
+});
+ </script>
+</body>
+</html>
