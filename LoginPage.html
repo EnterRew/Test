@@ -101,16 +101,10 @@ request.onsuccess = function(event) {
         // Сравниваем введенный пароль с паролем пользователя
         if (user.password === password) {
           // Пароль верный, возвращаем успешный результат
-          //resolve();
-          console.log(user.password)
-          console.log("Я ТУТ")
           i_dont_care = 1
-          console.log(i_dont_care)
           window.location.href = "./home.html";
           return true;
         } else {
-          console.log("bad")
-          alert("Invalid login or password");
          return false;
         }
       } else {
