@@ -13,52 +13,141 @@
 
 window.IndexedDB = window.webkitIndexedDB || window.mozIndexedDB || window.msIndexedDB;
 
-// Check if the database exists
-var db = IndexedDB.open("MyDatabase", 2);
+var request = window.indexedDB.open("MyDatabase", 2);
+let i_dont_care = 0
+request.onupgradeneeded = function(event) {
+  var db = event.target.result;
+  var objectStore = db.createObjectStore("users", { keyPath: "id", autoIncrement: true });
 
-// If the database does not exist, create it
-if (!db) {
-  db = IndexedDB.open("MyDatabase", 2, function(event) {
-    // Set the onupgradeneeded event listener
-    db.onupgradeneeded = function(event) {
-      var db = event.target.result;
-      db.createObjectStore("users", { keyPath: "login" });
-    
-      db.transaction("users").objectStore("users").add({ login: "johndoe", password: "password123" });
+  // db.createObjectStore("users", { keyPath: "login" });
+ 
+  objectStore.createIndex("login", "login", { unique: true });
+
+
+};
+
+request.onsuccess = function(event) {
+  var db = event.target.result;
+
+  // Ожидание завершения обновления базы данных
+  var transaction = db.transaction(["users"], "readwrite");
+  transaction.oncomplete = function(event) {
+    console.log("Transaction complete");
+
+    // Здесь можно выполнять другие операции с базой данных,
+    // например, добавление, изменение или удаление записей.
+
+    db.transaction("users", "readwrite").objectStore("users").add({ login: "johndoe", password: "password123" });
+    // db.createObjectStore("users", { keyPath: "login" });
+
+    // db.transaction("users", "readwrite").objectStore("users").add({ login: "johndoe", password: "password123" });
+  };
+
+// const objectStore = transaction.objectStore("users");
+
+// const user = { login: "johndoe", password: "password123" };
+// const request = objectStore.add(user);
+
+// request.onerror = function(event) {
+//   console.log("Ошибка при добавлении пользователя:", event.target.error);
+// };
+
+// request.onsuccess = function(event) {
+//   console.log("Пользователь успешно добавлен в базу данных!");
+// };
+  
+  console.log("Database opened successfully");
+
+  request.onupgradeneeded = function(event) {
+  let db = event.target.result;
+  let objectStore = db.createObjectStore("users", { keyPath: "login" });
+  db.transaction("users", "readwrite").objectStore("users").add({ login: "johndoe", password: "password123" });
+};
+
+
+
+  // function checkLogin(login, password) {
+  //   var userRequest = db.transaction("users").objectStore("users").get(login);
+
+  //   userRequest.onsuccess = function(event) {
+  //     var user = event.target.result;
+  //     if (user && user.password === password) {
+  //       return true;
+  //     } else {
+  //       console.log(user)
+  //       console.log(user.password)
+  //       return false;
+  //     }
+  //   };
+  // }
+
+
+  function checkLogin(login, password) {
+    return new Promise(resolve => {
+  // Создаем транзакцию на чтение из хранилища "users"
+  var transaction = db.transaction(["users"], "readonly");
+
+  // Получаем объектный магазин "users"
+  var objectStore = transaction.objectStore("users");
+
+  // Используем метод get() объектного магазина для получения данных пользователя по логину
+  var request = objectStore.get(1);
+
+ // return new Promise(function(resolve, reject) {
+    request.onsuccess = function(event) {
+      // Проверяем, найден ли пользователь
+      var user = event.target.result;
+      if (user) {
+        // Сравниваем введенный пароль с паролем пользователя
+        if (user.password === password) {
+          // Пароль верный, возвращаем успешный результат
+          //resolve();
+          console.log(user.password)
+          console.log("Я ТУТ")
+          i_dont_care = 1
+          console.log(i_dont_care)
+          window.location.href = "./home.html";
+          return true;
+        } else {
+          console.log("bad")
+          alert("Invalid login or password");
+         return false;
+        }
+      } else {
+        console.log(user)
+        console.log("Пользователь не найден")
+        return false;
+      }
     };
+    //return false;
+ // });
+ resolve();
+  });
+}
+function finale() {
+  var form = document.getElementById("loginForm");
+
+  form.addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    var login = form.elements["login"].value;
+    var password = form.elements["password"].value;
+
+    //console.log(login)
+   // console.log(password)
+    console.log(checkLogin(login, password));
+    console.log(i_dont_care)
+    if (i_dont_care == 1) {
+      window.location.href = "./home.html";
+      i_dont_care = 0
+    } else {
+      alert("Invalid login or password");
+    }
   });
 }
 
-// Check if the database was opened successfully
-if (db) {
-  console.log("Database opened successfully");
-} else {
-  console.log("Database could not be opened");
-}
-
-function checkLogin(login, password) {
-  var user = db.transaction("users").objectStore("users").get(login);
-
-  if (user && user.password === password) {
-    return true;
-  } else {
-    return false;
-  }
-}
-var form = document.getElementById("loginForm");
-
-form.addEventListener("submit", function(event) {
-  event.preventDefault();
-
-  var login = form.elements["login"].value;
-  var password = form.elements["password"].value;
-
-  if (checkLogin(login, password)) {
-    window.location.href = "home.html";
-  } else {
-    alert("Invalid login or password");
-  }
-});
+checkLogin().then(finale);
+};
  </script>
 </body>
 </html>
