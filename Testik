@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Block Editor</title>
+  <link rel="stylesheet" href="test.css">
+</head>
+<body>
+  <div id="editor">
+    <div class="element">
+      <div id="imageContainer"></div>
+      <img id="image">
+      <p class="name"></p>
+      <p id="description" class="prod-info"></p>
+      <p class="price"></p>
+    </div>
+    <button id="addBlock">Add Block</button>
+  </div>
+  <script src="test.js"></script>
+</body>
+</html>
+var editor = document.getElementById("editor");
+var blocks = [];
+
+function addBlock() {
+  var newBlock = document.createElement("div");
+  newBlock.classList.add("element");
+
+  var imageContainer = document.createElement("div");
+  imageContainer.id = "imageContainer";
+  newBlock.appendChild(imageContainer);
+
+  var image = document.createElement("img");
+  image.id = "image";
+  imageContainer.appendChild(image);
+
+  var name = document.createElement("p");
+  name.classList.add("name");
+  newBlock.appendChild(name);
+
+  var description = document.createElement("p");
+  description.id = "description";
+  description.classList.add("prod-info");
+  newBlock.appendChild(description);
+
+  var price = document.createElement("p");
+  price.classList.add("price");
+  newBlock.appendChild(price);
+
+  blocks.push(newBlock);
+
+  // Add the new block to the editor.
+  editor.appendChild(newBlock);
+
+  // Set the image source to a random image.
+  image.src =
+
+  // Set the name and description of the block.
+  name.innerHTML = "Block " + blocks.length;
+  description.innerHTML = "This is a block.";
+  price.innerHTML = "Цена Договорная";
+
+  // Add event listener to the name, description, price, and picture fields.
+  name.addEventListener("change", updateBlock);
+  description.addEventListener("change", updateBlock);
+  price.addEventListener("change", updateBlock);
+  image.addEventListener("change", updateBlock);
+}
+
+// Function to update the block when the name, description, price, or picture is changed.
+function updateBlock() {
+  // Get the current block.
+  var block = this.parentElement;
+
+  // Get the new name, description, price, and picture.
+  var name = this.value;
+  var description = description.value;
+  var price = price.value;
+  var image = image.src;
+
+  // Set the new name, description, price, and picture on the block.
+  block.querySelector(".name").innerHTML = name;
+  block.querySelector(".prod-info").innerHTML = description;
+  block.querySelector(".price").innerHTML = price;
+
+  // Save the block to local storage.
+  window.localStorage.setItem("blocks", JSON.stringify(blocks));
+}
+
+// Add event listener to the addBlock button.
+document.getElementById("addBlock").addEventListener("click", addBlock);
+
+// Save the blocks to local storage.
+window.localStorage.setItem("blocks", JSON.stringify(blocks));
+
+// Load the blocks from local storage when the page loads.
+if (window.localStorage.getItem("blocks")) {
+  blocks = JSON.parse(window.localStorage.getItem("blocks"));
+
+  // Add the blocks to the editor.
+  for (var i = 0; i < blocks.length; i++) {
+    editor.appendChild(blocks[i]);
+  }
+}
+.element {
+    width: 167px;
+    height: 110px;
+    display: inline-block;
+    margin: 10px;
+  }
+  
+  .name {
+    font-size: 18px;
+  }
+  
+  .prod-info {
+    font-size: 14px;
+  }
+  
+  .price {
+    font-size: 12px;
+  }
