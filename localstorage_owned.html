@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Block Editor</title>
+<style>
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.block {
+  width: 220px;
+  height: 150px;
+  margin: 10px;
+  border: 1px solid black;
+  float: left;
+  padding-left: 20px;
+}
+
+.block button {
+  margin-bottom: 10px;
+}
+
+.block img {
+  width: 100%;
+  height: 100%;
+}
+
+.block:last-child {
+  margin-bottom: 30px;
+}
+</style>
+</head>
+<body>
+<button id="add-block">Add Block</button>
+<div id="blocks"></div>
+
+<script>
+function addBlock() {
+  var newBlock = document.createElement("div");
+  newBlock.className = "block";
+
+  var image = document.createElement("img");
+  image.src = "image.jpg";
+  newBlock.appendChild(image);
+
+  var nameInput = document.createElement("input");
+  nameInput.setAttribute("type", "text");
+  nameInput.setAttribute("name", "name");
+  nameInput.setAttribute("placeholder", "Name");
+  newBlock.appendChild(nameInput);
+
+  var descriptionInput = document.createElement("textarea");
+  descriptionInput.setAttribute("name", "description");
+  descriptionInput.setAttribute("placeholder", "Description");
+  newBlock.appendChild(descriptionInput);
+
+  var priceInput = document.createElement("input");
+  priceInput.setAttribute("type", "number");
+  priceInput.setAttribute("name", "price");
+  priceInput.setAttribute("placeholder", "Price");
+  newBlock.appendChild(priceInput);
+
+  var changePictureButton = document.createElement("button");
+  changePictureButton.textContent = "Change Picture";
+  changePictureButton.addEventListener("click", function() {
+    var fileInput = document.createElement("input");
+    fileInput.setAttribute("type", "file");
+    fileInput.addEventListener("change", function() {
+      var file = fileInput.files[0];
+      // if (file.size > 200 * 130) {
+      //   alert("File size must be less than 200x130");
+      //   return;
+      // }
+      image.src = window.URL.createObjectURL(file);
+    });
+    document.body.appendChild(fileInput);
+  });
+
+  newBlock.appendChild(changePictureButton);
+
+  document.getElementById("blocks").appendChild(newBlock);
+}
+
+document.getElementById("add-block").addEventListener("click", addBlock);
+
+function saveBlocks() {
+  // Get all blocks
+  var blocks = document.querySelectorAll(".block");
+  console.log(blocks)
+  // Create an object to store the block data
+  var blockData = {};
+
+  // Loop through the blocks and add their data to the object
+  for (var i = 0; i < blocks.length; i++) {
+      var imageElement = blocks[i].querySelector("img");
+      // Create a canvas element and draw the image on it
+      var canvas = document.createElement("canvas");
+      canvas.width = imageElement.naturalWidth;
+      canvas.height = imageElement.naturalHeight;
+      var ctx = canvas.getContext("2d");
+
+
+            // Set the canvas size to the desired size
+      var maxWidth = 300;
+      var maxHeight = 300;
+      var width = imageElement.naturalWidth;
+      var height = imageElement.naturalHeight;
+      if (width > height) {
+        if (width > maxWidth) {
+          height *= maxWidth / width;
+          width = maxWidth;
+        }
+      } else {
+        if (height > maxHeight) {
+          width *= maxHeight / height;
+          height = maxHeight;
+        }
+      }
+      canvas.width = width;
+      canvas.height = height;
+
+      ctx.drawImage(imageElement, 0, 0);
+      // Get the base64 data from the canvas
+      var base64Image = canvas.toDataURL();
+    blockData[i] = {
+      name: blocks[i].querySelector("input[name=name]").value,
+      description: blocks[i].querySelector("textarea[name=description]").value,
+      price: blocks[i].querySelector("input[name=price]").value,
+      image: base64Image
+    };
+  }
+  console.log(blockData)
+
+  // Save the block data to LocalStorage
+  localStorage.setItem("blocks", JSON.stringify(blockData));
+}
+
+function loadBlocks() {
+  // Get the block data from localStorage
+  var blockData = JSON.parse(localStorage.getItem("blocks"));
+
+  // Loop through the block data and create blocks
+  for (var i in blockData) {
+    var data = blockData[i];
+
+    // Create a new block
+    var newBlock = document.createElement("div");
+    newBlock.className = "block";
+
+    // Create the image element
+    var image = document.createElement("img");
+    image.src = data.image;
+    newBlock.appendChild(image);
+
+    // Create the name input element
+    var nameInput = document.createElement("input");
+    nameInput.setAttribute("type", "text");
+    nameInput.setAttribute("name", "name");
+    nameInput.setAttribute("placeholder", "Name");
+    nameInput.value = data.name;
+    newBlock.appendChild(nameInput);
+
+    // Create the description textarea element
+    var descriptionInput = document.createElement("textarea");
+    descriptionInput.setAttribute("name", "description");
+    descriptionInput.setAttribute("placeholder", "Description");
+    descriptionInput.value = data.description;
+    newBlock.appendChild(descriptionInput);
+
+    // Create the price input element
+    var priceInput = document.createElement("input");
+    priceInput.setAttribute("type", "number");
+    priceInput.setAttribute("name", "price");
+    priceInput.setAttribute("placeholder", "Price");
+    priceInput.value = data.price;
+    newBlock.appendChild(priceInput);
+
+    // Append the new block to the page
+    document.body.appendChild(newBlock);
+  }
+}
+
+var button = document.createElement('button');
+button.innerHTML = 'Save';
+button.onclick = function() {
+    saveBlocks();
+}
+document.body.appendChild(button);
+// When the page is closed, save the blocks
+//window.addEventListener("beforeunload", saveBlocks);
+
+// When the page is loaded, restore the blocks
+window.addEventListener("load", function() {
+  loadBlocks();
+});
+</script>
+</body>
+</html>
