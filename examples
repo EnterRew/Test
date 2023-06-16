@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Block with buttons</title>
+<link rel="stylesheet" href="test2.css">
+</head>
+<body>
+<div class="container">
+  <h1>Block with buttons</h1>
+  <button id="add-block">Add block</button>
+  <div class="content">
+    <div class="block your-block">
+      <div class="block-image">
+        <img src="imagethr.jpg" alt="Block image" style="width: 370px; height: 250px;">
+      </div>
+      <div class="block-info">
+        <p class="name">Block name</p>
+        <p class="price">$100</p>
+        <p class="description">This is a block description.</p>
+        <button class="change-name">Change name</button>
+        <button class="edit-description">Edit description</button>
+        <button class="change-price">Change price</button>
+        <button class="delete-block">Delete block</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="test2.js"></script>
+</body>
+</html>
+function addBlock() {
+    var block = document.createElement("div");
+    block.className = "block your-block";
+    block.innerHTML = `
+      <div class="block-image">
+        <img src="imagethr.jpg" alt="Block image" style="width: 370px; height: 250px;">
+      </div>
+      <div class="block-info">
+        <p class="name">Block name</p>
+        <p class="price">$100</p>
+        <p class="description">This is a block description.</p>
+        <button class="change-name">Change name</button>
+        <button class="edit-description">Edit description</button>
+        <button class="change-price">Change price</button>
+        <button class="delete-block">Delete block</button>
+      </div>`;
+    var content = document.querySelector(".content");
+    var firstBlock = content.firstElementChild;
+    var position = firstBlock ? firstBlock.offsetLeft + 10 : 0;
+    block.style.left = position + "px";
+    content.appendChild(block);
+  }
+  
+  document.querySelector("#add-block").addEventListener("click", addBlock);
+  
+  // Change name button
+  document.querySelectorAll(".change-name").forEach(function(button) {
+    button.addEventListener("click", function() {
+      var block = button.closest(".block");
+      var name = block.querySelector(".name");
+      var newName = prompt("Enter new name:");
+      if (newName) {
+        name.textContent = newName;
+      }
+    });
+  });
+
+  // Edit description button
+  document.querySelectorAll(".edit-description").forEach(function(button) {
+    button.addEventListener("click", function() {
+      var block = button.closest(".block");
+      var description = block.querySelector(".description");
+      var newDescription = prompt("Enter new description:");
+      if (newDescription) {
+        description.textContent = newDescription;
+      }
+    });
+  });
+
+  // Delete block button
+  document.querySelectorAll(".delete-block").forEach(function(button) {
+    button.addEventListener("click", function() {
+      var block = button.closest(".block");
+      block.remove();
+    });
+  });
+
+  // Indent new blocks
+  document.querySelector(".content").addEventListener("click", function(event) {
+    if (event.target.classList.contains("block")) {
+      var block = event.target;
+      var newBlocks = block.querySelectorAll(".block");
+      for (var i = 0; i < newBlocks.length; i++) {
+        newBlocks[i].style.left = block.offsetLeft + 10 * (i + 1) + "px";
+      }
+    }
+  });
+body {
+    font-family: sans-serif;
+  }
+  
+  .block {
+    width: 380px;
+    height: 210px;
+    margin: 10px;
+    border: 1px solid black;
+  }
+  
+  .name {
+    font-size: 18px;
+  }
+  
+  .description {
+    font-size: 14px;
+  }
+  
+  .change-name {
+    color: black;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .edit-description {
+    color: black;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .delete-block {
+    color: red;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+  }
+<!DOCTYPE html>
+<html>
+<head>
+<title>Block with buttons</title>
+<link rel="stylesheet" href="Test3.css">
+</head>
+<body>
+<div id="blocks">
+  <!-- This is the first block -->
+  <div class="block">
+    <p class="name">Block name</p>
+    <p class="description">This is the description of the block.</p>
+    <button id="add-block">Add block</button>
+    <button class="change-name">Change name</button>
+    <button class="edit-description">Edit description</button>
+    <button class="delete-block">Delete block</button>
+  </div>
+</div>
+<script src="Test3.js"></script>
+</body>
+</html>
+function addBlock() {
+    var block = document.createElement("div");
+    block.classList.add("block");
+    var name = document.createElement("p");
+    name.classList.add("name");
+    name.textContent = "Block name";
+    var description = document.createElement("p");
+    description.classList.add("description");
+    description.textContent = "This is the description of the block.";
+    var buttons = document.createElement("div");
+    buttons.classList.add("buttons");
+    var changeNameButton = document.createElement("button");
+    changeNameButton.classList.add("change-name");
+    changeNameButton.textContent = "Change name";
+    var editDescriptionButton = document.createElement("button");
+    editDescriptionButton.classList.add("edit-description");
+    editDescriptionButton.textContent = "Edit description";
+    var deleteBlockButton = document.createElement("button");
+    deleteBlockButton.classList.add("delete-block");
+    deleteBlockButton.textContent = "Delete block";
+    buttons.appendChild(changeNameButton);
+    buttons.appendChild(editDescriptionButton);
+    buttons.appendChild(deleteBlockButton);
+    block.appendChild(name);
+    block.appendChild(description);
+    block.appendChild(buttons);
+    document.getElementById("blocks").appendChild(block);
+  }
+  
+  document.getElementById("add-block").onclick = addBlock;
+
+function changeName(block) {
+    var name = prompt("Enter new name for the block:");
+    if (name) {
+      block.querySelector(".name").textContent = name;
+    }
+  }
+  
+  function editDescription(block) {
+    var description = prompt("Enter new description for the block:");
+    if (description) {
+      block.querySelector(".description").textContent = description;
+    }
+  }
+  
+  function deleteBlock(block) {
+    block.remove();
+  }
+  
+  document.addEventListener("DOMContentLoaded", function() {
+    var blocks = document.querySelectorAll(".block");
+    for (var i = 0; i < blocks.length; i++) {
+      var block = blocks[i];
+      block.querySelector(".change-name").onclick = function() {
+        changeName(block);
+      };
+      block.querySelector(".edit-description").onclick = function() {
+        editDescription(block);
+      };
+      block.querySelector(".delete-block").onclick = function() {
+        deleteBlock(block);
+      };
+    }
+  });
+let elements = [];
+
+    function addImage() {
+      let fileInput = document.getElementById('fileInput');
+      let file = fileInput.files[0];
+      let reader = new FileReader();
+      reader.onload = function(event) {
+        let image = document.createElement('img');
+        image.src = event.target.result;
+        let element = document.createElement('div');
+        element.className = 'element';
+        element.innerHTML = `
+          <a href="#">
+            <img src="${event.target.result}" alt="Product Image">
+          </a>
+          <p class="name">${file.name}</p>
+        `;
+        elements.push(element);
+        updateElements();
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function updateElements() {
+      let content = document.querySelector('.content');
+      let row = 0;
+      for (let i = 0; i < elements.length; i++) {
+        let element = elements[i];
+        element.style.width = 167;
+        element.style.height = 110;
+        element.style.margin = 10;
+        if (row == 3) {
+          row = 0;
+          content.appendChild(element);
+        } else {
+          content.insertBefore(element, content.childNodes[row]);
+          row++;
+        }
+      }
+    }
+
+    function deleteBlock(element) {
+      elements = elements.filter(e => e !== element);
+      updateElements();
+    }
+
+    window.addEventListener('DOMContentLoaded', function() {
+      updateElements();
+    });
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#editor {
+  width: 600px;
+  margin: 0 auto;
+}
+
+.element {
+  width: 200px;
+  height: 130px;
+  border: 1px solid black;
+  margin: 10px;
+  float: left;
+}
+
+.imageContainer {
+  width: 100%;
+  height: 100px;
+}
+
+.name {
+  font-size: 20px;
+  text-align: center;
+}
+
+.prod-info {
+  font-size: 16px;
+  text-align: center;
+}
+
+.price {
+  font-size: 14px;
+  text-align: center;
+}
+
+.block-buttons {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.block-button {
+  background-color: #ccc;
+  border: 1px solid black;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+<!DOCTYPE html>
+<html>
+<head>
+<title>Block Editor</title>
+<style>
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.block {
+  width: 220px;
+  height: 150px;
+  margin: 10px;
+  border: 1px solid black;
+  float: left;
+  padding-left: 20px;
+}
+
+.block button {
+  margin-bottom: 10px;
+}
+
+.block img {
+  width: 100%;
+  height: 100%;
+}
+
+.block:last-child {
+  margin-bottom: 30px;
+}
+</style>
+</head>
+<body>
+<button id="add-block">Add Block</button>
+<div id="blocks"></div>
+
+<script>
+function addBlock() {
+  var newBlock = document.createElement("div");
+  newBlock.className = "block";
+
+  var image = document.createElement("img");
+  image.src = "image.jpg";
+  newBlock.appendChild(image);
+
+  var nameInput = document.createElement("input");
+  nameInput.setAttribute("type", "text");
+  nameInput.setAttribute("placeholder", "Name");
+  newBlock.appendChild(nameInput);
+
+  var descriptionInput = document.createElement("textarea");
+  descriptionInput.setAttribute("placeholder", "Description");
+  newBlock.appendChild(descriptionInput);
+
+  var priceInput = document.createElement("input");
+  priceInput.setAttribute("type", "number");
+  priceInput.setAttribute("placeholder", "Price");
+  newBlock.appendChild(priceInput);
+
+  var changePictureButton = document.createElement("button");
+  changePictureButton.textContent = "Change Picture";
+  changePictureButton.addEventListener("click", function() {
+    var fileInput = document.createElement("input");
+    fileInput.setAttribute("type", "file");
+    fileInput.addEventListener("change", function() {
+      var file = fileInput.files[0];
+      if (file.size > 200 * 130) {
+        alert("File size must be less than 200x130");
+        return;
+      }
+      image.src = window.URL.createObjectURL(file);
+    });
+    document.body.appendChild(fileInput);
+  });
+
+  newBlock.appendChild(changePictureButton);
+
+  document.getElementById("blocks").appendChild(newBlock);
+}
+
+document.getElementById("add-block").addEventListener("click", addBlock);
+
+function saveBlocks() {
+  // Get all blocks
+  var blocks = document.querySelectorAll(".block");
+
+  // Create an object to store the block data
+  var blockData = {};
+
+  // Loop through the blocks and add their data to the object
+  for (var i = 0; i < blocks.length; i++) {
+    blockData[i] = {
+      name: blocks[i].querySelector("input[name=name]").value,
+      description: blocks[i].querySelector("textarea[name=description]").value,
+      price: blocks[i].querySelector("input[name=price]").value,
+      image: blocks[i].querySelector("img").src
+    };
+  }
+
+  // Save the block data to LocalStorage
+  localStorage.setItem("blocks", JSON.stringify(blockData));
+}
+
+// When the page is closed, save the blocks
+window.addEventListener("beforeunload", saveBlocks);
+
+// When the page is loaded, restore the blocks
+window.addEventListener("load", function() {
+  // Get the block data from LocalStorage
+  var blockData = JSON.parse(localStorage.getItem("blocks"));
+
+  // If the block data is not empty, create blocks for each block in the data
+  if (blockData) {
+    for (var i = 0; i < blockData.length; i++) {
+      addBlock(blockData[i]);
+    }
+  }
+});
+</script>
+</body>
+</html>
+var editor = document.getElementById("editor");
+var blocks = [];
+
+function addBlock() {
+  var newBlock = document.createElement("div");
+  newBlock.classList.add("element");
+  var imageContainer = document.createElement("div");
+  imageContainer.id = "imageContainer";
+  newBlock.appendChild(imageContainer);
+  var image = document.createElement("img");
+  image.id = "image";
+  imageContainer.appendChild(image);
+  var name = document.createElement("p");
+  name.classList.add("name");
+  newBlock.appendChild(name);
+  var description = document.createElement("p");
+  description.id = "description";
+  description.classList.add("prod-info");
+  newBlock.appendChild(description);
+  var price = document.createElement("p");
+  price.classList.add("price");
+  newBlock.appendChild(price);
+
+  // Set the name and description of the block.
+  name.innerHTML = "Block " + blocks.length;
+  description.innerHTML = "This is a block.";
+  price.innerHTML = "Цена Договорная";
+
+  blocks.push(newBlock);
+
+  // Add the new block to the editor.
+  editor.appendChild(newBlock);
+
+  // Add event listener to the new block.
+  newBlock.addEventListener("click", updateButtons);
+
+  // Set the position of the new block.
+  newBlock.style.left = blocks.length * 200 + "px";
+
+  // Create the buttons for each block.
+  for (var i = 0; i < blocks.length; i++) {
+    var changeNameButton = document.createElement("button");
+    changeNameButton.classList.add("block-button change-name");
+    changeNameButton.innerHTML = "Change Name";
+    changeNameButton.addEventListener("click", function() {
+      var block = blocks[i];
+      var name = block.querySelector(".name");
+      name.innerHTML = prompt("Enter a new name for the block:");
+    });
+    blocks[i].appendChild(changeNameButton);
+
+    var changePriceButton = document.createElement("button");
+    changePriceButton.classList.add("block-button change-price");
+    changePriceButton.innerHTML = "Change Price";
+    changePriceButton.addEventListener("click", function() {
+      var block = blocks[i];
+      var price = block.querySelector(".price");
+      price.innerHTML = prompt("Enter a new price for the block:");
+    });
+    blocks[i].appendChild(changePriceButton);
+
+    var changeDescriptionButton = document.createElement("button");
+    changeDescriptionButton.classList.add("block-button change-description");
+    changeDescriptionButton.innerHTML = "Change Description";
+    changeDescriptionButton.addEventListener("click", function() {
+      var block = blocks[i];
+      var description = block.querySelector(".prod-info");
+      var newDescription = prompt("Enter a new description for the block:");
+      description.innerHTML = newDescription;
+    });
+    blocks[i].appendChild(changeDescriptionButton);
+
+    var deleteBlockButton = document.createElement("button");
+    deleteBlockButton.classList.add("block-button delete-block");
+    deleteBlockButton.innerHTML = "Delete Block";
+    deleteBlockButton.addEventListener("click", function() {
+      var block = blocks[i];
+      editor.removeChild(block);
+      blocks.splice(i, 1);
+    });
+    blocks[i].appendChild(deleteBlockButton);
+  }
+
+  // Add event listener to the addBlock button.
+  document.getElementById("addBlock").addEventListener("click", addBlock);
+
+  // Add event listener to the editor element.
+  editor.addEventListener("click", updateButtons);
+
+  function updateButtons(block) {
+    for (var i = 0; i < blocks.length; i++) {
+      if (blocks[i] === block) {
+        blocks[i].querySelector(".block-button.change-name").style.display = "block";
+        blocks[i].querySelector(".block-button.change-price").style.display = "block";
+        blocks[i].querySelector(".block-button.change-description").style.display = "block";
+        blocks[i].querySelector(".block-button.delete-block").style.display = "block";
+      } else {
+        blocks[i].querySelector(".block-button.change-name").style.display = "none";
+        blocks[i].querySelector(".block-button.change-price").style.display = "none";
+        blocks[i].querySelector(".block-button.change-description").style.display = "none";
+        blocks[i].querySelector(".block-button.delete-block").style.display = "none";
+      }
+    }
+  }
+}
+.block {
+  margin-bottom: 20px;
+  max-width: 380px;
+  max-height: 210px;
+}
+
+.block-image {
+  width: 370px;
+  height: 250px;
+}
+
+.block-info {
+  margin-top: 10px;
+}
+
+.name, .price, .description {
+  margin-bottom: 5px;
+}
+
+.change-name, .edit-description, .change-price, .delete-block {
+  color: black;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.delete-block {
+  color: red;
+}
+
+.your-block {
+  border: 1px solid #000;
+}
