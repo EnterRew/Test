@@ -97,19 +97,19 @@ nav ul a:hover {
     border-bottom: 2px #fff solid;
 }
 nav ul a img {
-    top: 0;
-    left: 0;
+    top: 0.35em;
+    right: 0;
     position: absolute;
     max-width: 100%;
     max-height: 100%;
-    width: 100%;
+    width: 10%;
     object-fit: cover;
 }
 .FirstCircle {
     width: 250px;
     height: 250px;
     border-radius: 50%;
-    background-color: rgb(228, 225, 225);
+    background-color: #E1A372;
     position: absolute;
     top: 30%;
     left: 10%;
@@ -120,7 +120,8 @@ nav ul a img {
 }
 
 .FirstCircle p {
-    font-size: 20px;
+    font-size: 24px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     position: absolute;
     top: 40%;
     left: 50%;
@@ -134,7 +135,7 @@ nav ul a img {
     width: 270px;
     height: 270px;
     border-radius: 50%;
-    background-color: rgb(91, 64, 116);
+    background-color: #031654;
     position: absolute;
     top: 58%;
     left: 20%;
@@ -146,6 +147,7 @@ nav ul a img {
 
 .SecondCircle p {
     color: #ffffff;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 24px;
     position: absolute;
     top: 40%;
@@ -160,7 +162,7 @@ nav ul a img {
     width: 290px;
     height: 290px;
     border-radius: 50%;
-    background-color: rgb(31, 77, 117);
+    background-color: #398ACC;
     position: absolute;
     top: 80%;
     left: 35%;
@@ -172,8 +174,9 @@ nav ul a img {
 
 .ThirdCircle p {
     color: #fff;
-    font-size: 20px;
-    padding: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 18px;
+    padding: 25px;
     text-align: center;
     shape-outside: circle(50%);
 }
@@ -182,7 +185,7 @@ nav ul a img {
     width: 300px;
     height: 300px;
     border-radius: 50%;
-    background-color: rgb(16, 85, 42);
+    background-color: #266fff;
     position: absolute;
     top: 80%;
     left: 57%;
@@ -194,8 +197,10 @@ nav ul a img {
 
 .FourthCircle p {
     color: #fff;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 18px;
-    padding: 20px;
+    padding: 30px;
     text-align: center;
     shape-outside: circle(50%);
 }
+
