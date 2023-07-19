@@ -1,56 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <link rel="icon" href="./img/icon.png">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./index.css">
-    
-    <title>Ангел-Декор</title>
+<title>Челик</title>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <section class="main-banner" alt="banner">
-        <img class="banner" src= "./img/AngelSky.jpg">
-    </section>
-    <nav class="main-products">
-        <div class="options">
-        <ul>
-                <li>
-                    <a href="./index.html" class="main-page">Главная</a>
-                </li>
-
-                <li>
-                    <a href="./pages/Vases.html" class="vasa">Вазы</a>
-                </li>
-        
-                <li>
-                    <a href="./pages/Sculptures.html" class="sculpt">Скульптуры</a>
-                </li>
-        
-                <li>
-                    <a href="./pages/Information.html" class="about">О нас</a>
-                </li>
-        
-                <li>
-                    <a href="./pages/Other.html" class="others">...</a>
-                </li>
-        </ul>
-    </div>
-    </nav>
-
-    <a href="./login/login-page.html" class="btn-login">
-        <i class="fas fa-user"></i>
-        Войти
-      </a>
-
-    <main>
-        <article>
-            <h2 class="label">для живущих в нашем сердце</h2>
-        </article>
-        <div class="cringe-for-button">
-            <a class="button" href="./pages/Production.html">Просмотр</a>
-        </div>
-    </main>
+<div id="blocks" class="blocks"></div>
+<div id="container" class="container">
+<button onclick="addBlock()">Добавить блок</button>
+<button onclick="removeBlocks()">Удалить все блоки</button>
+</div>
+<script src="script.js"></script>
 </body>
 </html>
